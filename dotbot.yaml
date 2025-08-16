@@ -1,0 +1,18 @@
+---
+################################################################################
+# Dotbot configuration for AI instructions
+# @see https://github.com/anishathalye/dotbot for more info
+################################################################################ 
+- defaults:
+      link:
+          create: true
+          relink: true
+          force: true
+
+- link:
+      # files
+      .github/copilot-instructions.md: ai/prompts/dotfiles/copilot/instructions-dotfiles.md
+      # folders
+      .github/chatmodes: ai/prompts/dotfiles/chatmodes
+      .github/prompts: ai/prompts/dotfiles/prompts
+      .github/instructions: ai/prompts/dotfiles/instructions
