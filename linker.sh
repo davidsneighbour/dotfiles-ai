@@ -14,11 +14,21 @@ Usage: ${SCRIPT_NAME} [command] [--force]
 Commands:
   setup     Create ~/.ai -> current repo symlink and install this script into ~/.dotfiles/bashrc/helpers
   link      Open interactive linker (default). Requires an existing .vscode directory unless --force is provided
+  status    Show linked and unlinked AI files by category
   help      Show this help
 
 Options:
   --force   Create .vscode if it does not exist when running the link command
 USAGE
+}
+
+print_error() {
+  local message="$1"
+  if command -v gum >/dev/null 2>&1; then
+    gum style --foreground 196 "${message}"
+  else
+    printf '%s\n' "${message}" >&2
+  fi
 }
 
 require_gum() {
@@ -63,7 +73,7 @@ ensure_ai_root() {
 
 require_ai_root_linked() {
   if [[ ! -L "${AI_ROOT}" ]]; then
-    gum style --foreground 196 "${AI_ROOT} needs to be linked before using this script. Run: ${SCRIPT_NAME} setup"
+    print_error "${AI_ROOT} needs to be linked before using this script. Run: ${SCRIPT_NAME} setup"
     exit 1
   fi
 }
@@ -136,6 +146,99 @@ build_entries() {
       printf '%s\t%s\n' "${name}" "${base}"
     fi
   done
+}
+
+is_item_linked() {
+  local category="$1"
+  local base="$2"
+  local name
+  name="$(strip_display_name "${base}")"
+
+  local source="${AI_ROOT}/${category}/${base}"
+  local target_dir=".vscode/${category}"
+  local target="${target_dir}/${name}"
+
+  if [[ -L "${target_dir}" ]]; then
+    local dir_target
+    dir_target="$(readlink "${target_dir}")"
+    [[ "${dir_target}" == "${AI_ROOT}/${category}" ]]
+    return
+  fi
+
+  if [[ -L "${target}" ]]; then
+    local item_target
+    item_target="$(readlink "${target}")"
+    [[ "${item_target}" == "${source}" ]]
+    return
+  fi
+
+  return 1
+}
+
+show_status() {
+  require_ai_root_linked
+
+  local any_linked="false"
+  local category source_dir entries line base name
+
+  printf 'AI link status for %s\n\n' "$(pwd)/.vscode"
+
+  for category in "${CATEGORIES[@]}"; do
+    source_dir="${AI_ROOT}/${category}"
+    printf '%s:\n' "${category}"
+
+    if [[ ! -d "${source_dir}" ]]; then
+      printf '  linked:\n'
+      printf '    (none)\n'
+      printf '  unlinked:\n'
+      printf '    (category missing in ~/.ai)\n\n'
+      continue
+    fi
+
+    mapfile -t entries < <(build_entries "${source_dir}" | sort)
+
+    if (( ${#entries[@]} == 0 )); then
+      printf '  linked:\n'
+      printf '    (none)\n'
+      printf '  unlinked:\n'
+      printf '    (no files)\n\n'
+      continue
+    fi
+
+    local linked=()
+    local unlinked=()
+
+    for line in "${entries[@]}"; do
+      base="${line#*$'\t'}"
+      name="${line%%$'\t'*}"
+      if is_item_linked "${category}" "${base}"; then
+        linked+=("${name}")
+        any_linked="true"
+      else
+        unlinked+=("${name}")
+      fi
+    done
+
+    printf '  linked:\n'
+    if (( ${#linked[@]} == 0 )); then
+      printf '    (none)\n'
+    else
+      printf '    - %s\n' "${linked[@]}"
+    fi
+
+    printf '  unlinked:\n'
+    if (( ${#unlinked[@]} == 0 )); then
+      printf '    (none)\n'
+    else
+      printf '    - %s\n' "${unlinked[@]}"
+    fi
+
+    printf '\n'
+  done
+
+  if [[ "${any_linked}" == "false" ]]; then
+    printf 'No AI files are currently linked.\n'
+  fi
 }
 
 link_individual_files() {
@@ -234,6 +337,9 @@ main() {
       ;;
     link)
       interactive_link "${force_create}"
+      ;;
+    status)
+      show_status
       ;;
     help|-h|--help)
       usage
