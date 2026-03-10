@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/instructions-frontmatter.schema.json",
+  "title": "Custom VS Code instruction frontmatter",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "applyTo": {
+      "type": "string",
+      "description": "Glob pattern that determines when the instruction file applies."
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    }
+  },
+  "required": [],
+  "unevaluatedProperties": true
+}

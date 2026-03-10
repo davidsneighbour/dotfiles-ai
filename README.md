@@ -14,6 +14,8 @@ Agents perform work, instructions constrain behaviour, prompts request tasks, an
 
 Use `scripts/ai-vscode-linker.sh` to create symlinks from this repository (expected at `~/.ai`) into the current folder's `.vscode/`.
 
+`~/.ai` must be linked before using the linker. Run `~/.ai/linker.sh setup` first.
+
 Examples:
 
 ```bash
@@ -22,6 +24,9 @@ Examples:
 
 # interactive linking in current directory
 linker.sh
+
+# create .vscode automatically before linking
+linker.sh --force
 ```
 
 The interactive menu supports:

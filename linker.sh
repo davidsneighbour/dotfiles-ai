@@ -9,12 +9,15 @@ CATEGORIES=("agents" "instructions" "prompts" "skills")
 
 usage() {
   cat <<USAGE
-Usage: ${SCRIPT_NAME} [command]
+Usage: ${SCRIPT_NAME} [command] [--force]
 
 Commands:
   setup     Create ~/.ai -> current repo symlink and install this script into ~/.dotfiles/bashrc/helpers
-  link      Open interactive linker (default)
+  link      Open interactive linker (default). Requires an existing .vscode directory unless --force is provided
   help      Show this help
+
+Options:
+  --force   Create .vscode if it does not exist when running the link command
 USAGE
 }
 
@@ -58,6 +61,30 @@ ensure_ai_root() {
   fi
 }
 
+require_ai_root_linked() {
+  if [[ ! -L "${AI_ROOT}" ]]; then
+    gum style --foreground 196 "${AI_ROOT} needs to be linked before using this script. Run: ${SCRIPT_NAME} setup"
+    exit 1
+  fi
+}
+
+ensure_vscode_target() {
+  local force_create="$1"
+
+  if [[ -d ".vscode" ]]; then
+    return
+  fi
+
+  if [[ "${force_create}" == "true" ]]; then
+    mkdir -p .vscode
+    gum style --foreground 42 "Created .vscode because --force was provided"
+    return
+  fi
+
+  gum style --foreground 196 ".vscode does not exist. Re-run with --force to create it."
+  exit 1
+}
+
 install_helper_link() {
   mkdir -p "${HELPERS_DIR}"
   local target="${HELPERS_DIR}/${SCRIPT_NAME}"
@@ -88,7 +115,6 @@ link_whole_category() {
     return
   fi
 
-  mkdir -p .vscode
   replace_target_with_symlink "${source}" "${target}"
   gum style --foreground 42 "Linked ${target} -> ${source}"
 }
@@ -151,7 +177,11 @@ link_individual_files() {
 }
 
 interactive_link() {
+  local force_create="${1:-false}"
+
   require_gum
+  require_ai_root_linked
+  ensure_vscode_target "${force_create}"
 
   gum style --border rounded --padding '0 1' --margin '1 0' \
     "AI linker" \
@@ -188,12 +218,22 @@ run_setup() {
 }
 
 main() {
-  case "${1:-link}" in
+  local command="${1:-link}"
+  local force_create="false"
+
+  if [[ "${2:-}" == "--force" ]]; then
+    force_create="true"
+  elif [[ "${1:-}" == "--force" ]]; then
+    command="link"
+    force_create="true"
+  fi
+
+  case "${command}" in
     setup)
       run_setup
       ;;
     link)
-      interactive_link
+      interactive_link "${force_create}"
       ;;
     help|-h|--help)
       usage
