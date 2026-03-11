@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.1.0...v0.2.0) (2026-03-11)
+
+### Features
+
+* add typescript instructions framework ([50d6f99](https://github.com/davidsneighbour/dotfiles-ai/commit/50d6f997002cdd9a7df22cc07b48287bc9db8ee8))
+
 ## [0.1.0](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.0.4...v0.1.0) (2026-03-11)
 
 ### Features
