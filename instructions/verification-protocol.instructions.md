@@ -1,10 +1,18 @@
-# verification.instructions.md
+---
+$schema: ./schemas/instructions.json
+description: This file defines the verification protocol that agents must follow before returning results to the user.
+applyTo: "**/*.*"
+name: Verification protocol
+author: Patrick Kollitsch
+---
+
+# Verification protocol
 
 ## Purpose
 
 This instruction defines the verification protocol that agents must follow before returning results to the user.  
 Its purpose is to prevent incomplete work, unchecked assumptions, and silent failures.
-
+  
 The protocol enforces a verification loop, explicit requirement checking, and clear reporting of blockers.
 
 Unless explicitly overridden by a more specific instruction file, this protocol applies to all tasks.

@@ -1,5 +1,5 @@
 ---
-$schema: /./schemas/instructions.json
+$schema: ./schemas/instructions.json
 description: This file defines reusable personality archetypes for consistent behavioural modes across prompts and agents.
 applyTo: "**/*.*"
 name: Personality archetypes
