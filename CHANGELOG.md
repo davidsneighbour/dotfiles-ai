@@ -1,4 +1,11 @@
 # Changelog
+## [0.0.3](https://github.com/davidsneighbour/copailot/compare/v0.0.2...v0.0.3) (2026-03-11)
+
+
+### Build System
+
+* **fix:** set proper repo path before releasing ([44f25eb](https://github.com/davidsneighbour/copailot/commit/44f25eb673e8694a62688b60c1974e4f9c2b7f6d))
+
 ## 0.0.2 (2026-03-11)
 
 
