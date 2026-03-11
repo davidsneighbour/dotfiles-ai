@@ -1,4 +1,15 @@
 # Changelog
+
+## [0.1.0](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.0.4...v0.1.0) (2026-03-11)
+
+### Features
+
+* add release-it configuration ([d1388be](https://github.com/davidsneighbour/dotfiles-ai/commit/d1388be4fef891e5992550a1b3cf7aa6f37dc09a))
+
+### Bug Fixes
+
+* disable npm package, enable github web release process ([5cfa6f8](https://github.com/davidsneighbour/dotfiles-ai/commit/5cfa6f8347fca470c4c5f5ffb4e301e3dce0bf15))
+
 ## [0.0.4](https://github.com/davidsneighbour/copailot/compare/v0.0.3...v0.0.4) (2026-03-11)
 
 
