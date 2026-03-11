@@ -29,6 +29,9 @@
     "lint:prompts": "markdownlint-cli2 \"prompts/**/*.prompt.md\""
   },
   "release-it": {
+    "npm": {
+      "publish": false
+    },
     "git": {
       "tagName": "v${version}",
       "commitMessage": "chore(release): v${version}",
@@ -39,7 +42,8 @@
       "push": true
     },
     "github": {
-      "release": true
+      "release": true,
+      "web": true
     },
     "plugins": {
       "@release-it/conventional-changelog": {
