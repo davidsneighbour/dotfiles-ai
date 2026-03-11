@@ -13,7 +13,7 @@ The system consists of four parts:
 * Verbosity (response length control)
 * Stage pipelines (multi-step workflows)
 
-# Archetypes
+## Archetypes
 
 Archetypes define the **reasoning personality** of the agent.
 
@@ -39,7 +39,7 @@ Example:
 Archetype: Sherlock
 ```
 
-# Cognitive Workflow Axis
+## Cognitive Workflow Axis
 
 The system also maps archetypes to a common **knowledge-work workflow**.
 
@@ -66,7 +66,7 @@ Examples:
 
 Explicit archetype instructions always override inferred behaviour.
 
-# Mode Shorthand
+## Mode Shorthand
 
 Modes provide a **natural language shorthand** for archetypes.
 
@@ -85,7 +85,7 @@ Mode: Explore
 
 This implicitly activates the **Marco** archetype.
 
-# Verbosity Control
+## Verbosity Control
 
 Verbosity controls **response length**, independent of reasoning personality.
 
@@ -130,7 +130,7 @@ Verbosity: normal
 
 → professional structured output
 
-# Control Axes
+## Control Axes
 
 The prompt system separates behaviour into independent controls.
 
@@ -148,7 +148,7 @@ Archetype: Sherlock
 Verbosity: minimal
 ```
 
-# Stage Pipeline System
+## Stage Pipeline System
 
 For complex tasks, prompts can define a **multi-step workflow pipeline**.
 
@@ -187,7 +187,7 @@ Useful for:
 * complex coding tasks
 * documentation generation
 
-# Shortened Pipelines
+## Shortened Pipelines
 
 Stages may be shortened if the task does not require the full workflow.
 
@@ -206,7 +206,7 @@ Stage 1: Explore
 Verbosity: detailed
 ```
 
-# Complete Prompt Control Language
+## Complete Prompt Control Language
 
 The system ultimately provides four control mechanisms.
 
