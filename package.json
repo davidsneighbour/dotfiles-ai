@@ -22,8 +22,8 @@
   },
   "type": "module",
   "scripts": {
-    "release": "commit-and-tag-version --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify && GITHUB_REPOSLUG=davidsneighbour/dotfiles-ai ./.github/postrelease",
-    "release:minor": "commit-and-tag-version --release-as minor --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify && GITHUB_REPOSLUG=davidsneighbour/dotfiles-ai ./.github/postrelease",
+    "release": "commit-and-tag-version --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify && export GITHUB_REPOSLUG=davidsneighbour/dotfiles-ai && ./.github/postrelease",
+    "release:minor": "commit-and-tag-version --release-as minor --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify && export GITHUB_REPOSLUG=davidsneighbour/dotfiles-ai && ./.github/postrelease",
     "format:prompts": "npx prettier --write \"prompts/**/*.prompt.md\"",
     "lint:prompts": "markdownlint-cli2 \"prompts/**/*.prompt.md\""
   }
