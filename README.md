@@ -6,6 +6,55 @@ Agents perform work, instructions constrain behaviour, prompts request tasks, an
 
 ## Instructions
 
+### TypeScript
+
+```mermaid
+flowchart TB
+
+    subgraph AI_REPO["AI Instruction Repository"]
+        CORE["typescript-core.instructions.md
+        
+        Strict TypeScript language rules"]
+
+        CONFIG["typescript-config-template.instructions.md
+        
+        Canonical tsconfig baseline"]
+
+        ARCH["typescript-architecture.instructions.md
+        
+        Architectural design rules"]
+
+        REVIEW["typescript-review.instructions.md
+        
+        Code review protocol"]
+
+        ASTRO["astro-typescript.instructions.md
+        
+        Astro framework overlay"]
+
+        AGG["typescript.instructions.md
+        
+        Aggregator instruction"]
+    end
+
+    AGG --> CORE
+    AGG --> CONFIG
+    AGG --> ARCH
+    AGG --> REVIEW
+
+    ASTRO --> CORE
+    ASTRO --> ARCH
+
+    subgraph REPOSITORIES["Repositories"]
+        TS_REPO["Generic TypeScript Repository"]
+        ASTRO_REPO["Astro Repository"]
+    end
+
+    TS_REPO --> AGG
+    ASTRO_REPO --> AGG
+    ASTRO_REPO --> ASTRO
+```
+
 ## Prompts
 
 ## Skills
