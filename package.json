@@ -14,17 +14,38 @@
   "homepage": "https://github.com/davidsneighbour/copailot#readme",
   "keywords": [],
   "dependencies": {
-    "@davidsneighbour/release-config": "2026.0.3",
     "undici-types": "7.22.0"
   },
   "devDependencies": {
-    "@types/node": "25.3.5"
+    "@types/node": "25.3.5",
+    "release-it": "^17.6.0",
+    "@release-it/conventional-changelog": "^8.0.2"
   },
   "type": "module",
   "scripts": {
-    "release": "commit-and-tag-version --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify && export GITHUB_REPOSLUG=davidsneighbour/dotfiles-ai && ./.github/postrelease",
-    "release:minor": "commit-and-tag-version --release-as minor --sign -a -t \"v\" --releaseCommitMessageFormat \"chore(release): v{{currentTag}}\" -- --no-verify && export GITHUB_REPOSLUG=davidsneighbour/dotfiles-ai && ./.github/postrelease",
+    "release": "release-it --ci",
+    "release:minor": "release-it --ci --increment minor",
     "format:prompts": "npx prettier --write \"prompts/**/*.prompt.md\"",
     "lint:prompts": "markdownlint-cli2 \"prompts/**/*.prompt.md\""
+  },
+  "release-it": {
+    "git": {
+      "tagName": "v${version}",
+      "commitMessage": "chore(release): v${version}",
+      "requireCleanWorkingDir": true,
+      "requireUpstream": true,
+      "commit": true,
+      "tag": true,
+      "push": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "conventionalcommits",
+        "infile": "CHANGELOG.md"
+      }
+    }
   }
 }
