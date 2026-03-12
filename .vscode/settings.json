@@ -47,5 +47,10 @@
         "cmd": "npx prettier --write \"${file}\""
       }
     ]
+  },
+  "yaml.schemas": {
+    "./schema/instructions.json": [
+      "instructions/*.instructions.md",
+    ]
   }
 }

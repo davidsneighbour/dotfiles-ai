@@ -1,4 +1,5 @@
 ---
+$schema: ./schema/instructions.json
 name: codex-task-to-prompt
 description: Convert a rough or reviewed engineering task into an execution-ready prompt for OpenAI Codex.
 applyTo: "**"

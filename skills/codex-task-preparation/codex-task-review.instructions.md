@@ -1,4 +1,5 @@
 ---
+$schema: ./schema/instructions.json
 name: codex-task-review
 description: Analyse and refine a rough engineering task before converting it into a Codex execution prompt.
 applyTo: "**"

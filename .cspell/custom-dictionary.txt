@@ -1,7 +1,9 @@
 # Custom Dictionary Words
 Frontmatter
+handoff
 Nullability
 offs
+pastable
 polyfills
 roleplay
 sugarcoating

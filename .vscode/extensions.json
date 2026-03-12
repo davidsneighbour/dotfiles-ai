@@ -1,6 +1,7 @@
 {
 	"recommendations": [
 		"streetsidesoftware.code-spell-checker-cspell-bundled-dictionaries",
-		"bierner.markdown-mermaid"
+		"bierner.markdown-mermaid",
+		"redhat.vscode-yaml"
 	]
 }

@@ -1,4 +1,5 @@
 ---
+$schema: ./schema/instructions.json
 name: codex-implementation-plan
 description: Generate a Codex Ask-mode planning prompt and a Codex Code-mode execution prompt for a reviewed task.
 applyTo: "**"
@@ -25,6 +26,7 @@ The Code-mode prompt is used to execute the implementation.
 ### Step 1: understand the objective
 
 Identify:
+
 * what must be implemented
 * expected behaviour
 * scope boundaries
@@ -34,6 +36,7 @@ Identify:
 ### Step 2: produce the Ask-mode prompt
 
 The Ask-mode prompt must instruct Codex to:
+
 * inspect the repository
 * identify relevant files and folders
 * identify project conventions
@@ -51,26 +54,33 @@ The Code-mode prompt must instruct Codex to implement the task using the reposit
 It must include the following sections:
 
 #### Objective
+
 A short statement of the task.
 
 #### Context
+
 Relevant user and repository context.
 
 #### Constraints
+
 Rules that must be followed during implementation.
 
 #### Likely locations
+
 Files or folders to inspect first.
 
 If uncertain, instruct Codex to inspect the repository before editing.
 
 #### Required work
+
 An ordered list of implementation tasks.
 
 #### Deliverables
+
 Files, tests, docs, or configuration changes that should result.
 
 #### Validation
+
 Commands or checks Codex should run to verify success.
 
 If the canonical commands are unknown, instruct Codex to inspect the repository and use the project's existing validation workflow.
@@ -78,6 +88,7 @@ If the canonical commands are unknown, instruct Codex to inspect the repository 
 ### Step 4: define assumption policy
 
 Both prompts must reinforce these rules:
+
 * inspect the repository before making architecture changes
 * preserve existing conventions
 * avoid unrelated refactors
