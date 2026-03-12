@@ -1,17 +1,17 @@
 {
-  "name": "@davidsneighbour/copailot",
+  "name": "@davidsneighbour/dotfiles-ai",
   "description": "",
   "version": "0.3.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidsneighbour/copailot.git"
+    "url": "git+https://github.com/davidsneighbour/dotfiles-ai.git"
   },
   "author": "Patrick Kollitsch <davidsneighbourdev+gh@gmail.com>",
   "bugs": {
-    "url": "https://github.com/davidsneighbour/copailot/issues"
+    "url": "https://github.com/davidsneighbour/dotfiles-ai/issues"
   },
-  "homepage": "https://github.com/davidsneighbour/copailot#readme",
+  "homepage": "https://github.com/davidsneighbour/dotfiles-ai#readme",
   "keywords": [],
   "dependencies": {
     "cspell": "9.7.0",

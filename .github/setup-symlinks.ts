@@ -12,7 +12,7 @@ const config: Config = {
   mainRepoRoot: process.cwd(),
   // Where your private repo lives:
   targetPath: path.resolve(
-    process.env.COPAILOT_REPO_PATH ?? '~/github.com/davidsneighbour/copailot',
+    process.env.DOTFILES_AI_REPO_PATH ?? '~/github.com/davidsneighbour/dotfiles-ai',
   ),
   // Where the link should be inside the main repo:
   linkPath: path.resolve(process.cwd(), '.github/instructions'),

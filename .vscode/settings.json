@@ -1,9 +1,4 @@
 {
-  "cSpell.words": [
-    "copailot",
-    "COPAILOT",
-    "postrelease"
-  ],
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   "chat.useAgentsMdFile": true,
   "chat.useNestedAgentsMdFiles": false,
