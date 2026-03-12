@@ -59,6 +59,14 @@ flowchart TB
 
 ## Skills
 
+### Codex Task Preparation
+
+```bash
+npx skills install https://github.com/davidsneighbour/dotfiles-ai/tree/main/skills/codex-task-preparation
+```
+
+Prepare a rough engineering task for OpenAI Codex by discovering repository context, reviewing the task, shaping a Codex-ready prompt, and producing Ask-mode and Code-mode handoff prompts.
+
 ## VS Code AI Symlink Helper
 
 Use `scripts/ai-vscode-linker.sh` to create symlinks from this repository (expected at `~/.ai`) into the current folder's `.vscode/`.
@@ -80,13 +88,13 @@ linker.sh --force
 
 The interactive menu supports:
 
-- linking full folders (`agents`, `instructions`, `prompts`, `skills`) to `.vscode/<name>`
-- selecting single items (files or folders) in each category and linking them individually with clean display names
+* linking full folders (`agents`, `instructions`, `prompts`, `skills`) to `.vscode/<name>`
+* selecting single items (files or folders) in each category and linking them individually with clean display names
 
 ## Licensed content
 
 These links into 404s are by design.
 
-- [Tailwind Plus UI-Blocks llms.txt](https://tailwindcss.com/plus/ui-blocks/documentation/llms.txt)
-- [Emil.md](https://animations.dev/learn/emil-skill)
-- [Animations.dev Skill](https://animations.dev/learn/animation-theory/animations-and-ai#installation)
+* [Tailwind Plus UI-Blocks llms.txt](https://tailwindcss.com/plus/ui-blocks/documentation/llms.txt)
+* [Emil.md](https://animations.dev/learn/emil-skill)
+* [Animations.dev Skill](https://animations.dev/learn/animation-theory/animations-and-ai#installation)
