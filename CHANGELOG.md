@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.2.0...v0.3.0) (2026-03-12)
+
+### Features
+
+* add symlinks for licensed content ([4e905fa](https://github.com/davidsneighbour/dotfiles-ai/commit/4e905fa1d712cffa629335c650290408a917a72c))
+* **skill:** add idea to codex task skill framework ([b79a2f4](https://github.com/davidsneighbour/dotfiles-ai/commit/b79a2f405608b40c9ffaf0a44ef313a8e46f848d))
+
+### Bug Fixes
+
+* schema setup for instructions frontmatter ([03c0958](https://github.com/davidsneighbour/dotfiles-ai/commit/03c0958dee491f397403d952e18abd8dd51962e2))
+
 ## [0.2.0](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.1.0...v0.2.0) (2026-03-11)
 
 ### Features
