@@ -82,3 +82,11 @@ The interactive menu supports:
 
 - linking full folders (`agents`, `instructions`, `prompts`, `skills`) to `.vscode/<name>`
 - selecting single items (files or folders) in each category and linking them individually with clean display names
+
+## Licensed content
+
+These links into 404s are by design.
+
+- [Tailwind Plus UI-Blocks llms.txt](https://tailwindcss.com/plus/ui-blocks/documentation/llms.txt)
+- [Emil.md](https://animations.dev/learn/emil-skill)
+- [Animations.dev Skill](https://animations.dev/learn/animation-theory/animations-and-ai#installation)
