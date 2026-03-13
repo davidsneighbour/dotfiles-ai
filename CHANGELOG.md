@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.3.1...v0.4.0) (2026-03-13)
+
+### Features
+
+* add tessl prompts ([8f17723](https://github.com/davidsneighbour/dotfiles-ai/commit/8f1772379f596d44d634fa5eb15c39fbab3029c3))
+* humanizer and prose compiler instructions and skills ([dbfe09b](https://github.com/davidsneighbour/dotfiles-ai/commit/dbfe09bd0a8b7c5a65fcdebb39c064213678858c))
+
 ## [0.3.1](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.3.0...v0.3.1) (2026-03-12)
 
 ## [0.3.0](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.2.0...v0.3.0) (2026-03-12)
