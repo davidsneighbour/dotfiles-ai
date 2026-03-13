@@ -6,4 +6,6 @@ offs
 pastable
 polyfills
 roleplay
+SKILLPATH
 sugarcoating
+tessl
