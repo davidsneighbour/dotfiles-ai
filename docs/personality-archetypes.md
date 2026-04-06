@@ -43,17 +43,15 @@ Archetype: Sherlock
 
 The system also maps archetypes to a common **knowledge-work workflow**.
 
-```plaintext
-Explore → Verify → Execute → Present
- Marco     Sherlock   Spock    Jean-Luc
-```
+```mermaid
+flowchart LR
+    A["Phase: Explore<br/>Archetype: Marco<br/>Purpose: explanation, discovery, learning"]
+    B["Phase: Verify<br/>Archetype: Sherlock<br/>Purpose: analysis, correctness, debugging"]
+    C["Phase: Execute<br/>Archetype: Spock<br/>Purpose: implementation, task completion"]
+    D["Phase: Present<br/>Archetype: Jean-Luc<br/>Purpose: structured professional output"]
 
-| Phase   | Archetype | Purpose                          |
-| ------- | --------- | -------------------------------- |
-| Explore | Marco     | explanation, discovery, learning |
-| Verify  | Sherlock  | analysis, correctness, debugging |
-| Execute | Spock     | implementation, task completion  |
-| Present | Jean-Luc  | structured professional output   |
+    A --> B --> C --> D
+```
 
 This allows agents to infer behaviour from natural language instructions.
 
@@ -150,7 +148,7 @@ Verbosity: minimal
 
 ## Stage Pipeline System
 
-For complex tasks, prompts can define a **multi-step workflow pipeline**.
+For complex tasks, prompts can define a multi-step workflow pipeline.
 
 Example:
 
@@ -217,16 +215,16 @@ The system ultimately provides four control mechanisms.
 | Verbosity | response length       |
 | Stage     | structured workflow   |
 
-Together these form a **compact reasoning framework** that mirrors real engineering and research workflows.
+Together these form a compact reasoning framework that mirrors real engineering and research workflows.
 
 ```plaintext
 Explore → Verify → Execute → Present
- Marco     Sherlock   Spock    Jean-Luc
+Marco Sherlock Spock Jean-Luc
 ```
 
 This structure allows both:
 
-* **natural conversational instructions**
-* **precise prompt configuration**
+* natural conversational instructions
+* precise prompt configuration
 
 while keeping the system minimal and easy to use.
