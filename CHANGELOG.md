@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.4.0...v0.4.1) (2026-04-06)
+
+### Bug Fixes
+
+* add resources folder to linker script ([fe80104](https://github.com/davidsneighbour/dotfiles-ai/commit/fe8010431d11a51f0c462fbf65b8df77fca3f37e))
+* remove release files ([94047bf](https://github.com/davidsneighbour/dotfiles-ai/commit/94047bfd11d70c1fd5d8aca9936632410007cae2))
+
 ## [0.4.0](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.3.1...v0.4.0) (2026-03-13)
 
 ### Features
