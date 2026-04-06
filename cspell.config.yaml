@@ -4,5 +4,5 @@ dictionaries:
   - custom-dictionary
 dictionaryDefinitions:
   - name: custom-dictionary
-    path: ./.cspell/custom-dictionary.txt
+    path: ./.vscode/custom-dictionary.txt
     addWords: true
