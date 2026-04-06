@@ -5,7 +5,7 @@ SCRIPT_NAME="$(basename "$0")"
 AI_ROOT="${HOME}/.ai"
 HELPERS_DIR="${HOME}/.dotfiles/bashrc/helpers"
 
-CATEGORIES=("agents" "instructions" "prompts" "skills")
+CATEGORIES=("agents" "instructions" "prompts" "skills" "resources")
 
 usage() {
   cat <<USAGE
