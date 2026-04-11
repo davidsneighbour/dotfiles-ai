@@ -115,18 +115,34 @@ strip_display_name() {
   printf '%s' "${filename}"
 }
 
-link_whole_category() {
+link_all_items_in_category() {
   local category="$1"
   local source="${AI_ROOT}/${category}"
-  local target=".vscode/${category}"
+  local target_dir=".vscode/${category}"
 
   if [[ ! -d "${source}" ]]; then
     gum style --foreground 214 "Skipping ${category}: ${source} not found"
     return
   fi
 
-  replace_target_with_symlink "${source}" "${target}"
-  gum style --foreground 42 "Linked ${target} -> ${source}"
+  local entries=()
+  mapfile -t entries < <(build_entries "${source}" | sort)
+
+  if ((${#entries[@]} == 0)); then
+    gum style --foreground 214 "Skipping ${category}: no items in ${source}"
+    return
+  fi
+
+  mkdir -p "${target_dir}"
+
+  local line name base
+  for line in "${entries[@]}"; do
+    name="${line%%$'\t'*}"
+    base="${line#*$'\t'}"
+
+    replace_target_with_symlink "${source}/${base}" "${target_dir}/${name}"
+    gum style --foreground 42 "Linked ${target_dir}/${name} -> ${source}/${base}"
+  done
 }
 
 pick_category() {
@@ -157,13 +173,6 @@ is_item_linked() {
   local source="${AI_ROOT}/${category}/${base}"
   local target_dir=".vscode/${category}"
   local target="${target_dir}/${name}"
-
-  if [[ -L "${target_dir}" ]]; then
-    local dir_target
-    dir_target="$(readlink "${target_dir}")"
-    [[ "${dir_target}" == "${AI_ROOT}/${category}" ]]
-    return
-  fi
 
   if [[ -L "${target}" ]]; then
     local item_target
@@ -197,7 +206,7 @@ show_status() {
 
     mapfile -t entries < <(build_entries "${source_dir}" | sort)
 
-    if (( ${#entries[@]} == 0 )); then
+    if ((${#entries[@]} == 0)); then
       printf '  linked:\n'
       printf '    (none)\n'
       printf '  unlinked:\n'
@@ -220,14 +229,14 @@ show_status() {
     done
 
     printf '  linked:\n'
-    if (( ${#linked[@]} == 0 )); then
+    if ((${#linked[@]} == 0)); then
       printf '    (none)\n'
     else
       printf '    - %s\n' "${linked[@]}"
     fi
 
     printf '  unlinked:\n'
-    if (( ${#unlinked[@]} == 0 )); then
+    if ((${#unlinked[@]} == 0)); then
       printf '    (none)\n'
     else
       printf '    - %s\n' "${unlinked[@]}"
@@ -254,7 +263,7 @@ link_individual_files() {
   local entries=()
   mapfile -t entries < <(build_entries "${source_dir}" | sort)
 
-  if (( ${#entries[@]} == 0 )); then
+  if ((${#entries[@]} == 0)); then
     gum style --foreground 214 "No items in ${source_dir}"
     return
   fi
@@ -262,7 +271,7 @@ link_individual_files() {
   local selected=()
   mapfile -t selected < <(printf '%s\n' "${entries[@]}" | gum choose --no-limit --header "Select ${category} items to symlink")
 
-  if (( ${#selected[@]} == 0 )); then
+  if ((${#selected[@]} == 0)); then
     gum style --foreground 214 "No items selected"
     return
   fi
@@ -293,23 +302,23 @@ interactive_link() {
 
   local action
   action="$(gum choose \
-    "Link all categories (agents/instructions/prompts/skills)" \
-    "Link one full category" \
+    "Link all items in all categories" \
+    "Link all items in one category" \
     "Link individual items")"
 
   case "${action}" in
-    "Link all categories (agents/instructions/prompts/skills)")
-      local category
-      for category in "${CATEGORIES[@]}"; do
-        link_whole_category "${category}"
-      done
-      ;;
-    "Link one full category")
-      link_whole_category "$(pick_category)"
-      ;;
-    "Link individual items")
-      link_individual_files
-      ;;
+  "Link all items in all categories")
+    local category
+    for category in "${CATEGORIES[@]}"; do
+      link_all_items_in_category "${category}"
+    done
+    ;;
+  "Link all items in one category")
+    link_all_items_in_category "$(pick_category)"
+    ;;
+  "Link individual items")
+    link_individual_files
+    ;;
   esac
 }
 
@@ -332,22 +341,22 @@ main() {
   fi
 
   case "${command}" in
-    setup)
-      run_setup
-      ;;
-    link)
-      interactive_link "${force_create}"
-      ;;
-    status)
-      show_status
-      ;;
-    help|-h|--help)
-      usage
-      ;;
-    *)
-      usage
-      exit 1
-      ;;
+  setup)
+    run_setup
+    ;;
+  link)
+    interactive_link "${force_create}"
+    ;;
+  status)
+    show_status
+    ;;
+  help | -h | --help)
+    usage
+    ;;
+  *)
+    usage
+    exit 1
+    ;;
   esac
 }
 
