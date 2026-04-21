@@ -27,7 +27,9 @@
     "release": "release-it",
     "release:minor": "release-it --increment minor",
     "format:prompts": "npx prettier --write \"prompts/**/*.prompt.md\"",
-    "lint:prompts": "markdownlint-cli2 \"prompts/**/*.prompt.md\""
+    "lint:prompts": "markdownlint-cli2 \"prompts/**/*.prompt.md\"",
+    "lint:hook:commit": "lint-staged --quiet",
+    "lint:hook:commit:loud": "lint-staged --debug --verbose"
   },
   "release-it": {
     "npm": {
@@ -52,5 +54,8 @@
         "infile": "CHANGELOG.md"
       }
     }
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run lint:hook:commit"
   }
 }
