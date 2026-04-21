@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.0](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.4.1...v0.5.0) (2026-04-21)
+
+### Features
+
+* add gh token instructions ([892f2bc](https://github.com/davidsneighbour/dotfiles-ai/commit/892f2bc4c531de47d15cc711404823325f2d0c60))
+
+### Bug Fixes
+
+* link individual files instead of the whole folder ([b18b4f7](https://github.com/davidsneighbour/dotfiles-ai/commit/b18b4f7b5682a8e3e32083174f3ef84cf2f8c995))
+
 ## [0.4.1](https://github.com/davidsneighbour/dotfiles-ai/compare/v0.4.0...v0.4.1) (2026-04-06)
 
 ### Bug Fixes
